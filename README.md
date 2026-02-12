@@ -130,12 +130,12 @@ significantly - Pickup location influences surge probability
 ## Stratified Analysis (Platform-Specific KDA)
 
 ### Lyft
-
+````
 Surge rate: 6.82
 ROC AUC: 0.7194
 
 Top Drivers: - product_name - source - short_summary - route - distance
-
+````
 ### Uber
 
 Surge rate: 0.0
