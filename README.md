@@ -49,11 +49,6 @@ Put the required CSV file in the same folder as the Python scripts, or
 update the CSV_PATH variable in the scripts to point to your local
 dataset path.
 
-Example (Windows):
-
-CSV_PATH =
-r"C:`\Users`{=tex}`\YOUR`{=tex}\_NAME`\path`{=tex}`\to`{=tex}`\your`{=tex}`\rideshare`{=tex}\_kaggle.csv"
-
 ### 3) Install dependencies
 
 pip install duckdb pandas numpy scikit-learn
@@ -61,16 +56,17 @@ pip install duckdb pandas numpy scikit-learn
 ### 4) Run the scripts
 
 Run the combined model:
-
+```
 python uber_lyft_kda.py
-
+```
 Run the stratified model:
-
+```
 python kda_stratified.py
-
-The scripts will print: - Model performance (ROC AUC, etc.) - Key driver
-rankings (permutation importance)
-
+```
+The scripts will print:
+```
+Model performance (ROC AUC, etc.) - Key driver rankings (permutation importance)
+```
 ------------------------------------------------------------------------
 
 ## Why Surge Instead of Price?
@@ -78,9 +74,9 @@ rankings (permutation importance)
 ### Why Not Use price as KPI?
 
 Using price as the KPI would mostly rediscover the pricing formula:
-
+```
 price approx base_fare + distance times rate + surge
-
+```
 If we used price: - Distance would dominate - The model would reflect
 mechanical pricing logic - Insights would be trivial
 
@@ -102,9 +98,9 @@ This produced weak signal.
 ## Final KPI Choice: Binary surge_flag
 
 We defined:
-
-surge_flag = 1 if surge_multiplier \> 1 else 0
-
+```
+surge_flag = 1 if surge_multiplier > 1 else 0
+```
 This improves signal strength and aligns with classical KDA methodology.
 
 ------------------------------------------------------------------------
@@ -119,13 +115,13 @@ aligned with traditional KDA methodology.
 ------------------------------------------------------------------------
 
 ## Combined Model Results (Uber + Lyft)
-
-Surge rate: 3.03\
+```
+Surge rate: 3.03
 ROC AUC: 0.8796
 
 Top Drivers: 1. cab_type 2. product_name 3. source 4. short_summary 5.
 route
-
+```
 Interpretation: - Platform dominates surge behavior - Ride tier matters
 significantly - Pickup location influences surge probability
 
@@ -135,7 +131,7 @@ significantly - Pickup location influences surge probability
 
 ### Lyft
 
-Surge rate: 6.82\
+Surge rate: 6.82
 ROC AUC: 0.7194
 
 Top Drivers: - product_name - source - short_summary - route - distance
