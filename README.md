@@ -56,17 +56,18 @@ https://www.kaggle.com/datasets/brllrb/uber-and-lyft-dataset-boston-ma
 pip install duckdb pandas numpy scikit-learn
 
 5.  Run the scripts:
-
-python uber_lyft_kda.py python kda_stratified.py
-
+```
+python uber_lyft_kda.py
+python kda_stratified.py
+```
 ------------------------------------------------------------------------
 
 # Part I -- Behavioral Pricing (Surge Analysis)
 
 ## KPI Definition
-
-surge_flag = 1 if surge_multiplier \> 1 else 0
-
+```
+surge_flag = 1 if surge_multiplier > 1 else 0
+```
 Why binary?
 
 -   Surge events are rare (\~3% of rides).
@@ -82,17 +83,17 @@ Why binary?
 -   Driver ranking via permutation importance (AUC drop)
 
 ## Results
-
-Surge rate: \~3%\
-ROC AUC: \~0.88
-
+```
+Surge rate: ~3%
+ROC AUC: ~0.88
+```
 Key drivers:
-
-1.  cab_type\
-2.  product_name\
-3.  source\
+```
+1.  cab_type
+2.  product_name
+3.  source
 4.  route
-
+```
 Stratified analysis showed:
 
 -   Lyft exhibits surge events.
@@ -110,10 +111,10 @@ asymmetric.
 # Part II -- Structural Pricing (Price Intensity Analysis)
 
 ## KPI Engineering
-
-price_per_mile = price / distance\
+```
+price_per_mile = price / distance
 log_price_intensity = log(price_per_mile)
-
+```
 Why transform?
 
 -   Removes mechanical dominance of distance.
@@ -132,13 +133,13 @@ Why transform?
 R² ≈ 0.94
 
 Top drivers:
-
-1.  product_name\
-2.  distance\
-3.  route\
-4.  source\
+```
+1.  product_name
+2.  distance
+3.  route
+4.  source
 5.  destination
-
+```
 Platform importance becomes minimal after controlling for tier and
 route.
 
